@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wedding of Akbar & Soleha - Modern Minimalist</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Italianno & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Italianno&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mono: {
+              black: '#121212',
+              card: '#1e1e1e',
+              gray: '#6b7280',
+              light: '#f9f9fb',
+              border: '#e5e7eb'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            script: ['Italianno', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Tulisan Vertikal Mirip Kolom Editorial */
+    .vertical-lr {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+    }
+    
+    /* Animasi Mengambang Lembut */
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .animate-float {
+      animation: gentle-float 3.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-neutral-900 text-neutral-800 font-sans antialiased flex justify-center selection:bg-neutral-900 selection:text-white">
+
+  <!-- Background Audio (Bisa diganti jalur lokal: assets/audio/romantic-piano.mp3) -->
+  <audio id="wedding-audio" loop preload="none">
+    <source src="assets/audio/romantic-piano.mp3" type="audio/mp3">
+    <!-- Cadangan online jika aset lokal belum ada -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=piano-moment-wedding-110826.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Tombol Musik Mengambang -->
+  <button id="audio-control" onclick="toggleAudio()" class="fixed top-5 right-5 z-50 w-11 h-11 bg-white/90 text-mono-black backdrop-blur-md border border-neutral-200 rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+    <i id="audio-icon" class="fa-solid fa-play text-sm"></i>
+  </button>
+
+  <!-- KONTEN CONTAINER (Mobile Frame Bersih) -->
+  <div class="w-full max-w-[420px] bg-white shadow-2xl min-h-screen overflow-hidden flex flex-col relative">
+
+    <!-- ================= 1. COVER HERO DENGAN FOTO UTAMA ================= -->
+    <header class="relative w-full h-[540px] bg-neutral-100 overflow-hidden">
+      <!-- Foto Prewedding (Monochrome / Warm Moody) -->
+      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&auto=format&fit=crop&q=80" alt="Akbar dan Soleha" class="w-full h-full object-cover grayscale-[30%] contrast-[1.05]">
+      
+      <!-- Gradient Gelap Transparan di Tengah & Bawah -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 flex flex-col justify-between p-7 text-center text-white">
+        
+        <!-- Tag Save The Date -->
+        <div data-aos="fade-down" class="pt-2">
+          <span class="text-[10px] uppercase tracking-[0.35em] text-white/80 font-medium border-b border-white/40 pb-1">The Wedding Celebration</span>
+        </div>
+
+        <!-- Tipografi Nama Pasangan (Gaya Editorial Tumpuk) -->
+        <div data-aos="zoom-in" data-aos-duration="1000" class="py-6">
+          <h1 class="font-serif italic text-6xl leading-[0.85] text-white font-light tracking-wide drop-shadow-sm">Akbar</h1>
+          <h2 class="font-serif italic text-6xl leading-[0.85] text-white/90 font-light tracking-wide mt-1">Soleha</h2>
+          <p class="font-serif tracking-[0.25em] text-sm text-neutral-200 mt-4">23 . 08 . 2026</p>
+        </div>
+
+        <!-- Kotak Nama Tamu Dinamis (?invite=...) -->
+        <div data-aos="fade-up" class="bg-white/15 backdrop-blur-md border border-white/30 rounded-2xl p-4 text-center">
+          <p class="text-[10px] uppercase tracking-widest text-neutral-200 mb-0.5">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+          <h3 id="guest-name" class="font-serif text-lg font-semibold text-white tracking-wide">Tamu Undangan</h3>
+          
+          <button onclick="startInvitation()" class="mt-3 w-full py-2.5 bg-white text-mono-black font-serif uppercase tracking-[0.2em] text-[11px] font-bold rounded-xl shadow-lg hover:bg-neutral-100 active:scale-95 transition-all">
+            <i class="fa-regular fa-envelope-open mr-1"></i> Buka Undangan
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ================= 2. PESAN PEMBUKA & SALAM ================= -->
+    <section class="py-12 px-8 text-center space-y-4 bg-white">
+      <div data-aos="fade-up" class="space-y-3">
+        <p class="text-[10px] uppercase tracking-[0.3em] text-mono-gray font-medium">Bismillahirrahmannirrahiim</p>
+        <h3 class="font-serif text-2xl font-bold text-mono-black">Yth. Sahabat & Keluarga Tercinta</h3>
+        <p class="text-xs text-mono-gray leading-relaxed font-light max-w-xs mx-auto">
+          Dengan penuh rasa hormat dan syukur kepada Allah SWT, kami bermaksud mengundang Anda untuk hadir serta memberikan doa restu pada hari istimewa kami.
+        </p>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="100" class="pt-2">
+        <button onclick="scrollToSection('rsvp-section')" class="text-xs font-serif font-semibold text-mono-black border-b border-mono-black pb-0.5 hover:text-mono-gray hover:border-mono-gray transition">
+          Konfirmasi Kehadiran (RSVP) &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= 3. FOTO CINEMATIC PEMISAH (TUKAR CINCIN) ================= -->
+    <section class="px-6 py-2">
+      <div data-aos="fade-up" class="w-full h-64 rounded-2xl overflow-hidden shadow-sm">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&auto=format&fit=crop&q=80" alt="Detail Cincin Pernikahan" class="w-full h-full object-cover grayscale contrast-125">
+      </div>
+    </section>
+
+    <!-- ================= 4. HITUNG MUNDUR (COUNTDOWN MINIMALIS) ================= -->
+    <section class="py-10 px-8 text-center bg-white space-y-3">
+      <div data-aos="fade-up">
+        <p class="text-[10px] uppercase tracking-[0.35em] text-mono-gray">Menghitung Hari</p>
+        <p class="font-serif italic text-sm text-neutral-500 mt-0.5">Menuju Momen Ijab & Janji Suci</p>
+      </div>
+
+      <!-- Angka Countdown Sederhana Sesuai Gambar Referensi -->
+      <div data-aos="zoom-in" class="py-4 border-y border-neutral-100 flex items-center justify-center gap-3 font-serif">
+        <div class="text-center">
+          <span id="days" class="text-3xl font-light text-mono-black">00</span>
+          <span class="block text-[9px] uppercase tracking-widest text-neutral-400 mt-1">Hari</span>
+        </div>
+        <span class="text-neutral-300 text-xl font-light pb-4">:</span>
+        <div class="text-center">
+          <span id="hours" class="text-3xl font-light text-mono-black">00</span>
+          <span class="block text-[9px] uppercase tracking-widest text-neutral-400 mt-1">Jam</span>
+        </div>
+        <span class="text-neutral-300 text-xl font-light pb-4">:</span>
+        <div class="text-center">
+          <span id="minutes" class="text-3xl font-light text-mono-black">00</span>
+          <span class="block text-[9px] uppercase tracking-widest text-neutral-400 mt-1">Menit</span>
+        </div>
+        <span class="text-neutral-300 text-xl font-light pb-4">:</span>
+        <div class="text-center">
+          <span id="seconds" class="text-3xl font-light text-mono-black">00</span>
+          <span class="block text-[9px] uppercase tracking-widest text-neutral-400 mt-1">Detik</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. KUTIPAN SUCI / AYAT (PENGGANTI DRESS CODE) ================= -->
+    <!-- Dibuat dengan gaya layout vertikal khas majalah seperti gambar referensi -->
+    <section class="py-8 px-6 bg-mono-light flex items-center gap-5 border-y border-neutral-200/80">
+      
+      <!-- Label Vertikal "KUTIPAN SUCI" Sesuai Style 'DRESS CODE' Referensi -->
+      <div class="py-2 pl-1 border-r border-neutral-300 flex items-center">
+        <span class="vertical-lr font-serif uppercase tracking-[0.3em] text-mono-black font-bold text-xs">
+          KUTIPAN SUCI
+        </span>
+      </div>
+
+      <!-- Isi Pesan & Foto Pasangan Berjalan Tangga -->
+      <div class="flex-1 space-y-4">
+        <!-- Foto Tangga Prewedding -->
+        <div data-aos="fade-left" class="w-full h-52 rounded-xl overflow-hidden grayscale contrast-[1.1] shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80" alt="Foto Pasangan" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Ayat Suci QS Ar-Rum & Pesan Indonesia -->
+        <div data-aos="fade-up" class="text-left space-y-2 pr-1">
+          <p class="font-serif italic text-xs leading-relaxed text-neutral-700">
+            "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+          </p>
+          <p class="text-[10px] uppercase tracking-widest font-semibold text-mono-black">
+            — QS. Ar-Rum: 21
+          </p>
+          <p class="text-[11px] text-mono-gray leading-normal pt-1">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan berkah doa restu bagi langkah baru kami berdua.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 6. PROGRAM HARI / SUSUNAN ACARA ================= -->
+    <section class="py-12 px-8 bg-white space-y-6">
+      <div data-aos="fade-up" class="text-center">
+        <h3 class="font-serif uppercase tracking-[0.25em] text-mono-black font-bold text-base">Rundown Acara</h3>
+        <p class="text-xs text-mono-gray mt-1 font-light">Minggu, 23 Agustus 2026</p>
+      </div>
+
+      <!-- Garis Vertikal Rundown Sesuai Gambar Referensi -->
+      <div data-aos="fade-up" class="border-l-2 border-mono-black pl-5 ml-4 space-y-6 py-2">
+        
+        <!-- Sesi 1: Akad Nikah -->
+        <div class="space-y-1">
+          <span class="text-xs font-serif font-bold text-mono-black tracking-wider">08:00 WIB — AKAD NIKAH</span>
+          <p class="text-xs text-mono-gray font-light leading-relaxed">
+            Momen sakral pengucapan ijab kabul bersama keluarga inti dan saksi.
+          </p>
+        </div>
+
+        <!-- Sesi 2: Resepsi Sesi I -->
+        <div class="space-y-1">
+          <span class="text-xs font-serif font-bold text-mono-black tracking-wider">11:00 - 13:00 WIB — RAMAH TAMAH</span>
+          <p class="text-xs text-mono-gray font-light leading-relaxed">
+            Penyambutan tamu undangan, sesi foto bersama, serta jamuan santap siang.
+          </p>
+        </div>
+
+        <!-- Sesi 3: Resepsi Sesi II -->
+        <div class="space-y-1">
+          <span class="text-xs font-serif font-bold text-mono-black tracking-wider">15:00 - SELESAI — RESEPSI UTAMA</span>
+          <p class="text-xs text-mono-gray font-light leading-relaxed">
+            Perayaan penuh kehangatan bersama sahabat dan keluarga besar.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Monogram Inisial A & S -->
+      <div data-aos="zoom-in" class="pt-4 text-center">
+        <span class="font-serif italic text-4xl text-neutral-400 tracking-wider">A & S</span>
+      </div>
+    </section>
+
+    <!-- ================= 7. TEMPAT ACARA (CARD LINGKARAN KREATIF) ================= -->
+    <section class="py-10 px-8 bg-mono-light text-center space-y-5 border-t border-neutral-200">
+      <div data-aos="fade-up" class="space-y-1">
+        <p class="text-[10px] uppercase tracking-[0.25em] text-mono-gray">LOKASI PERAYAAN</p>
+        <h4 class="font-serif text-xl font-bold text-mono-black">Palace Garden Villa & Resort</h4>
+        <p class="text-xs text-mono-gray">Kawasan Puncak, Jawa Barat</p>
+      </div>
+
+      <!-- Frame Gambar Lingkaran Sesuai Referensi -->
+      <div data-aos="zoom-in" class="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-white shadow-md">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&auto=format&fit=crop&q=80" alt="Venue Acara" class="w-full h-full object-cover">
+      </div>
+
+      <div data-aos="fade-up">
+        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-mono-black text-white text-xs font-serif uppercase tracking-widest hover:bg-neutral-800 transition shadow">
+          <i class="fa-solid fa-location-dot"></i> Petunjuk Google Maps
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= 8. RSVP FORMULIR ================= -->
+    <section id="rsvp-section" class="py-12 px-8 bg-white space-y-5 border-t border-neutral-100">
+      <div data-aos="fade-up" class="text-center space-y-1">
+        <h4 class="font-serif text-2xl font-bold uppercase tracking-widest text-mono-black">RSVP</h4>
+        <p class="text-xs text-mono-gray">Mohon konfirmasi kehadiran sebelum tanggal 15 Agustus 2026</p>
+      </div>
+
+      <form onsubmit="sendRsvp(event)" class="space-y-3" data-aos="fade-up" data-aos-delay="100">
+        <input type="text" id="rsvp-name" placeholder="Nama Anda" required class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-2.5 text-xs text-neutral-800 focus:outline-none focus:border-mono-black transition">
+        
+        <select id="rsvp-status" class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-2.5 text-xs text-neutral-800 focus:outline-none focus:border-mono-black transition">
+          <option value="Hadir">Saya akan Hadir</option>
+          <option value="Tidak Hadir">Mohon Maaf, Berhalangan</option>
+        </select>
+
+        <textarea id="rsvp-message" rows="3" placeholder="Tuliskan ucapan atau doa untuk kedua mempelai..." required class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-2.5 text-xs text-neutral-800 focus:outline-none focus:border-mono-black transition"></textarea>
+
+        <button type="submit" class="w-full py-3 bg-mono-black text-white font-serif uppercase tracking-[0.2em] text-xs font-semibold rounded-xl hover:bg-neutral-800 active:scale-95 transition-all shadow">
+          Kirim Konfirmasi Via WhatsApp
+        </button>
+      </form>
+    </section>
+
+    <!-- ================= 9. TANDA KASIH / AMPLOP DIGITAL (DETALI) ================= -->
+    <footer class="bg-mono-black text-white py-12 px-8 text-center space-y-5">
+      <div data-aos="fade-up" class="space-y-2">
+        <h4 class="font-serif text-lg uppercase tracking-[0.25em] text-neutral-200">TANDA KASIH</h4>
+        <p class="text-xs text-neutral-400 font-light leading-relaxed max-w-xs mx-auto">
+          Kehadiran serta doa restu Anda adalah karunia yang teramat berharga bagi kami. Namun apabila ingin memberikan tanda kasih secara cashless, dapat disalurkan melalui:
+        </p>
+      </div>
+
+      <!-- Card Rekening Minimalis Gelap -->
+      <div data-aos="zoom-in" class="bg-mono-card border border-neutral-700/60 rounded-2xl p-4 text-left space-y-2">
+        <div class="flex justify-between items-center text-xs text-neutral-400">
+          <span>BANK CENTRAL ASIA (BCA)</span>
+          <i class="fa-regular fa-credit-card"></i>
+        </div>
+        <p class="font-mono text-base font-bold text-white tracking-widest" id="acc-number">883012345678</p>
+        <p class="text-xs text-neutral-300">a.n. Akbar Pratama</p>
+        <button onclick="copyAccount()" class="w-full mt-2 py-2 bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 text-neutral-200 text-xs rounded-xl font-medium transition flex items-center justify-center gap-2">
+          <i class="fa-regular fa-copy"></i> Salin Nomor Rekening
+        </button>
+      </div>
+
+      <!-- Penutup -->
+      <div data-aos="fade-up" class="pt-4 space-y-1">
+        <p class="font-script text-4xl text-neutral-200">Terima Kasih</p>
+        <p class="font-serif text-[10px] tracking-[0.3em] uppercase text-neutral-500 mt-2">AKBAR & SOLEHA • 2026</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Salin Rekening -->
+  <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-white text-mono-black border border-neutral-200 text-xs px-5 py-2.5 rounded-full font-medium shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300">
+    Nomor rekening berhasil disalin!
+  </div>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    // Inisialisasi AOS
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out-cubic'
+    });
+
+    // 1. Ambil Nama Tamu dari URL (?invite=Nama+Tamu)
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const guest = urlParams.get('invite');
+      if (guest) {
+        document.getElementById('guest-name').innerText = decodeURIComponent(guest);
+      }
+      initCountdown();
+    });
+
+    // 2. Kontrol Musik Latar
+    const audio = document.getElementById('wedding-audio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+
+    function startInvitation() {
+      // Putar musik saat tamu klik tombol "Buka Undangan"
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          audioIcon.classList.replace('fa-play', 'fa-pause');
+        }).catch(e => console.log('Autoplay ditahan:', e));
+      }
+      // Scroll halus ke bawah menuju konten
+      window.scrollBy({ top: 480, behavior: 'smooth' });
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+        audioIcon.classList.replace('fa-pause', 'fa-play');
+        isPlaying = false;
+      } else {
+        audio.play();
+        audioIcon.classList.replace('fa-play', 'fa-pause');
+        isPlaying = true;
+      }
+    }
+
+    // 3. Countdown Timer (Target: 23 Agustus 2026)
+    function initCountdown() {
+      const targetDate = new Date('August 23, 2026 08:00:00').getTime();
+
+      setInterval(() => {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff > 0) {
+          document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+          document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+          document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+          document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
+      }, 1000);
+    }
+
+    // 4. Salin Nomor Rekening
+    function copyAccount() {
+      const num = document.getElementById('acc-number').innerText;
+      navigator.clipboard.writeText(num).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.remove('opacity-0');
+        setTimeout(() => toast.classList.add('opacity-0'), 2000);
+      });
+    }
+
+    // 5. Scroll Halus Helper
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 6. RSVP Terhubung WhatsApp
+    function sendRsvp(e) {
+      e.preventDefault();
+      const name = document.getElementById('rsvp-name').value;
+      const status = document.getElementById('rsvp-status').value;
+      const message = document.getElementById('rsvp-message').value;
+
+      const waText = `Halo Akbar & Soleha,%0A%0ASaya *${encodeURIComponent(name)}* mengonfirmasi kehadiran: *${encodeURIComponent(status)}*.%0A%0APesan/Doa: "${encodeURIComponent(message)}"`;
+      window.open(`https://wa.me/6281234567890?text=${waText}`, '_blank');
+    }
+  </script>
+</body>
+</html>
