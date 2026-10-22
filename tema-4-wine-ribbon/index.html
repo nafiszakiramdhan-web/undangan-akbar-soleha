@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akbar & Soleha - Wine Ribbon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { wine: { DEFAULT: '#6e111d', dark: '#4f0912', soft: '#fbf7f4' } },
+          fontFamily: { script: ['"Alex Brush"', 'cursive'], serif: ['"Playfair Display"', 'serif'], sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-stone-900 text-stone-800 font-sans antialiased flex justify-center">
+
+  <audio id="wedding-audio" loop preload="none">
+    <source src="assets/audio/romantic.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=warm-acoustic-guitar-wedding-10948.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="audio-control" onclick="toggleAudio()" class="fixed top-5 right-5 z-50 w-11 h-11 bg-wine text-white rounded-full flex items-center justify-center shadow-lg transition hover:scale-105">
+    <i id="audio-icon" class="fa-solid fa-play text-sm"></i>
+  </button>
+
+  <div class="w-full max-w-[420px] bg-wine-soft min-h-screen overflow-hidden flex flex-col relative shadow-2xl">
+    
+    <!-- Cover Header -->
+    <header class="pt-10 px-6 text-center space-y-3" data-aos="fade-down">
+      <p class="font-script text-4xl text-wine">We Are Getting Married!</p>
+      <div class="flex items-center justify-center gap-3">
+        <h1 class="font-serif text-3xl font-bold text-stone-900">Akbar</h1>
+        <span class="font-script text-3xl text-wine">&</span>
+        <h2 class="font-serif text-3xl font-bold text-stone-900">Soleha</h2>
+      </div>
+      <p class="text-[10px] uppercase tracking-[0.25em] text-wine font-semibold">08 . 08 . 2026</p>
+
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <div class="h-44 rounded-2xl overflow-hidden shadow-sm">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="h-44 rounded-2xl overflow-hidden shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <div class="bg-white border border-wine/20 rounded-2xl p-3.5 shadow-sm text-center mt-3">
+        <p class="text-[10px] uppercase tracking-wider text-stone-500">Kepada Yth:</p>
+        <h3 id="guest-name" class="font-serif text-base font-bold text-wine">Tamu Undangan</h3>
+      </div>
+    </header>
+
+    <!-- Mini Calendar -->
+    <section class="py-8 px-6 text-center space-y-3" data-aos="fade-up">
+      <p class="font-script text-3xl text-wine">Save The Date</p>
+      <p class="text-xs text-stone-500">Agustus 2026</p>
+      <div class="flex items-center justify-center gap-2 pt-1 font-serif text-sm">
+        <div class="w-10 h-10 border border-stone-300 rounded-xl flex items-center justify-center text-stone-500">6</div>
+        <div class="w-10 h-10 border border-stone-300 rounded-xl flex items-center justify-center text-stone-500">7</div>
+        <div class="w-12 h-12 bg-wine text-white rounded-2xl shadow-md flex flex-col items-center justify-center">
+          <i class="fa-solid fa-heart text-xs text-rose-200"></i>
+          <span class="font-bold text-sm leading-none mt-0.5">08</span>
+        </div>
+        <div class="w-10 h-10 border border-stone-300 rounded-xl flex items-center justify-center text-stone-500">9</div>
+        <div class="w-10 h-10 border border-stone-300 rounded-xl flex items-center justify-center text-stone-500">10</div>
+      </div>
+    </section>
+
+    <!-- Acara Garis Sambung -->
+    <section class="py-6 px-8 space-y-6" data-aos="fade-up">
+      <p class="font-script text-3xl text-wine text-center">Rangkaian Acara</p>
+      <div class="border-l-2 border-wine/40 pl-6 ml-4 space-y-6 relative">
+        <div class="space-y-1 relative">
+          <div class="w-3.5 h-3.5 bg-wine rounded-full absolute -left-[31px] top-1 border-2 border-white"></div>
+          <p class="font-script text-2xl text-wine">Akad Nikah</p>
+          <span class="text-xs font-bold text-stone-800">08:00 - 10:00 WIB</span>
+          <p class="text-xs text-stone-500">Ijab kabul bersama keluarga tercinta.</p>
+        </div>
+        <div class="space-y-1 relative">
+          <div class="w-3.5 h-3.5 bg-wine rounded-full absolute -left-[31px] top-1 border-2 border-white"></div>
+          <p class="font-script text-2xl text-wine">Resepsi & Jamuan</p>
+          <span class="text-xs font-bold text-stone-800">11:00 - Selesai</span>
+          <p class="text-xs text-stone-500">Ramah tamah dan foto bersama mempelai.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue Card -->
+    <section class="px-6 py-4" data-aos="fade-up">
+      <div class="bg-wine text-white p-6 rounded-3xl text-center space-y-3 shadow-md">
+        <p class="font-script text-3xl text-rose-200">Tempat Acara</p>
+        <h4 class="font-serif text-lg font-bold">Grand Ballroom Villa Rosa</h4>
+        <p class="text-xs text-white/80 font-light">Jl. Kenanga Raya No. 18, Sentul, Bogor</p>
+        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-wine font-semibold text-xs rounded-full shadow hover:bg-stone-100 transition">
+          <i class="fa-solid fa-location-dot"></i> Buka Peta
+        </a>
+      </div>
+    </section>
+
+    <!-- Countdown & RSVP -->
+    <footer class="bg-wine text-white rounded-t-[40px] pt-10 pb-12 px-8 text-center space-y-6 mt-6">
+      <div class="space-y-1" data-aos="fade-up">
+        <p class="font-script text-3xl text-rose-200">Hitung Mundur</p>
+        <div class="flex items-center justify-center gap-3 font-serif text-lg pt-1">
+          <div><span id="days">00</span><span class="block text-[8px] uppercase text-rose-300">Hari</span></div>:
+          <div><span id="hours">00</span><span class="block text-[8px] uppercase text-rose-300">Jam</span></div>:
+          <div><span id="minutes">00</span><span class="block text-[8px] uppercase text-rose-300">Menit</span></div>:
+          <div><span id="seconds">00</span><span class="block text-[8px] uppercase text-rose-300">Detik</span></div>
+        </div>
+      </div>
+
+      <form onsubmit="sendRsvp(event)" class="space-y-2.5 pt-2" data-aos="fade-up">
+        <p class="text-xs text-white/80 mb-2">Konfirmasi Kehadiran (RSVP)</p>
+        <input type="text" id="rsvp-name" placeholder="Nama Lengkap" required class="w-full bg-white text-stone-800 rounded-xl px-4 py-2 text-xs focus:outline-none">
+        <select id="rsvp-status" class="w-full bg-white text-stone-800 rounded-xl px-4 py-2 text-xs focus:outline-none">
+          <option value="Hadir">Saya akan Hadir</option>
+          <option value="Berhalangan">Berhalangan Hadir</option>
+        </select>
+        <button type="submit" class="w-full py-2.5 bg-stone-900 text-white rounded-xl text-xs font-semibold uppercase tracking-wider hover:bg-black transition">
+          Kirim via WhatsApp
+        </button>
+      </form>
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('invite');
+    if (guest) document.getElementById('guest-name').innerText = decodeURIComponent(guest);
+
+    const audio = document.getElementById('wedding-audio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+    function toggleAudio() {
+      if (isPlaying) { audio.pause(); audioIcon.classList.replace('fa-pause', 'fa-play'); isPlaying = false; }
+      else { audio.play(); audioIcon.classList.replace('fa-play', 'fa-pause'); isPlaying = true; }
+    }
+
+    const targetDate = new Date('August 8, 2026 08:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+      }
+    }, 1000);
+
+    function sendRsvp(e) {
+      e.preventDefault();
+      const n = document.getElementById('rsvp-name').value;
+      const s = document.getElementById('rsvp-status').value;
+      window.open(`https://wa.me/6281285589413?text=Halo%20Akbar%20%26%20Soleha%2C%20saya%20*${encodeURIComponent(n)}*%20mengonfirmasi%20*${encodeURIComponent(s)}*.`, '_blank');
+    }
+  </script>
+</body>
+</html>

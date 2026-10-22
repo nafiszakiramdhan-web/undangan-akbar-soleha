@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akbar & Soleha - Crimson Bold</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { crimson: { DEFAULT: '#871822', dark: '#5c0f16', soft: '#fdfbfa' } },
+          fontFamily: { hand: ['Caveat', 'cursive'], sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-stone-900 text-stone-800 font-sans antialiased flex justify-center">
+
+  <audio id="wedding-audio" loop preload="none">
+    <source src="assets/audio/upbeat.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=piano-moment-wedding-110826.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="audio-control" onclick="toggleAudio()" class="fixed top-5 right-5 z-50 w-11 h-11 bg-crimson text-white rounded-full flex items-center justify-center shadow-lg transition hover:scale-105">
+    <i id="audio-icon" class="fa-solid fa-play text-sm"></i>
+  </button>
+
+  <div class="w-full max-w-[420px] bg-white min-h-screen overflow-hidden flex flex-col relative shadow-2xl">
+    
+    <!-- Hero Banner Miring Crimson Sesuai Desain Taplink -->
+    <header class="relative bg-crimson text-white pt-10 pb-16 px-6 text-center overflow-hidden">
+      <div class="space-y-1" data-aos="fade-down">
+        <p class="font-hand text-4xl text-rose-200">Wedding Day</p>
+        <h1 class="text-3xl font-extrabold tracking-wider uppercase">Akbar & Soleha</h1>
+      </div>
+
+      <div data-aos="zoom-in" class="mt-6 w-56 h-56 mx-auto rounded-3xl overflow-hidden border-4 border-white shadow-xl rotate-[-2deg]">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+      </div>
+    </header>
+
+    <!-- Tanggal Besar Angka Tumpuk -->
+    <section class="bg-white px-6 py-8 -mt-6 rounded-t-3xl text-center space-y-4" data-aos="fade-up">
+      <div class="bg-rose-50 border border-crimson/20 rounded-2xl p-3 inline-block px-6">
+        <p class="text-[10px] uppercase font-bold text-stone-400">Kepada Yth:</p>
+        <h3 id="guest-name" class="text-base font-bold text-crimson">Tamu Undangan</h3>
+      </div>
+
+      <div class="py-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-crimson">Tanggal Bahagia</span>
+        <div class="font-extrabold text-5xl text-stone-900 tracking-tighter leading-none mt-2">
+          26 <span class="text-crimson">/</span> 07 <span class="text-crimson">/</span> 26
+        </div>
+      </div>
+    </section>
+
+    <!-- Dress Code Gelas Warna -->
+    <section class="px-6 py-6 bg-stone-50 border-y border-stone-200 text-center space-y-4" data-aos="fade-up">
+      <p class="font-hand text-3xl text-crimson">Dress Code Tamu</p>
+      <p class="text-xs text-stone-600">Nuansa busana yang disarankan:</p>
+      <div class="flex justify-center gap-4 text-xs font-bold text-stone-600">
+        <div class="space-y-1"><span class="w-8 h-8 rounded-full bg-[#871822] block mx-auto shadow-sm"></span>Marun</div>
+        <div class="space-y-1"><span class="w-8 h-8 rounded-full bg-[#dfb2aa] block mx-auto shadow-sm"></span>Nude</div>
+        <div class="space-y-1"><span class="w-8 h-8 rounded-full bg-[#202020] block mx-auto shadow-sm"></span>Hitam</div>
+      </div>
+    </section>
+
+    <!-- Rundown Waktu Acara -->
+    <section class="px-8 py-8 space-y-4 text-center" data-aos="fade-up">
+      <h3 class="text-lg font-extrabold uppercase tracking-wider text-stone-900">Jadwal Acara</h3>
+      <div class="space-y-3 max-w-xs mx-auto text-left text-xs">
+        <div class="flex items-center gap-4 p-3 rounded-xl bg-rose-50 border border-crimson/15">
+          <span class="font-extrabold text-crimson text-sm">12:00</span>
+          <div><p class="font-bold">Kedatangan Tamu</p><p class="text-stone-500 text-[11px]">Penyambutan tamu undangan</p></div>
+        </div>
+        <div class="flex items-center gap-4 p-3 rounded-xl bg-rose-50 border border-crimson/15">
+          <span class="font-extrabold text-crimson text-sm">14:00</span>
+          <div><p class="font-bold">Ijab Kabul & Resepsi</p><p class="text-stone-500 text-[11px]">Prosesi sakral & doa berkah</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Button Bottom -->
+    <footer class="bg-crimson text-white p-8 text-center space-y-4 mt-auto">
+      <h4 class="font-hand text-4xl text-rose-200">See You There!</h4>
+      <p class="text-xs text-white/80 font-light">Konfirmasikan kehadiran Anda via WhatsApp:</p>
+      <a href="https://wa.me/6281285589413?text=Halo%20Akbar%20%26%20Soleha%2C%20saya%20akan%20hadir%20di%20pernikahan%20kalian!" target="_blank" class="block w-full py-3 bg-white text-crimson font-bold rounded-2xl text-xs uppercase tracking-wider shadow-lg hover:bg-rose-100 transition">
+        <i class="fa-brands fa-whatsapp text-sm mr-1"></i> Konfirmasi Hadir
+      </a>
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('invite');
+    if (guest) document.getElementById('guest-name').innerText = decodeURIComponent(guest);
+
+    const audio = document.getElementById('wedding-audio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+    function toggleAudio() {
+      if (isPlaying) { audio.pause(); audioIcon.classList.replace('fa-pause', 'fa-play'); isPlaying = false; }
+      else { audio.play(); audioIcon.classList.replace('fa-play', 'fa-pause'); isPlaying = true; }
+    }
+  </script>
+</body>
+</html>

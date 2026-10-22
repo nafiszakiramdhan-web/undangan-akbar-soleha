@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akbar & Soleha - Creamy Romance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { scrap: { bg: '#fdfbf7', card: '#f5efe6', red: '#8a1c29', dark: '#382b26' } },
+          fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-stone-900 text-stone-800 font-sans antialiased flex justify-center">
+
+  <audio id="wedding-audio" loop preload="none">
+    <source src="assets/audio/sweet.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=gamelan-traditional-ambient-112199.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="audio-control" onclick="toggleAudio()" class="fixed top-5 right-5 z-50 w-11 h-11 bg-scrap-red text-white rounded-full flex items-center justify-center shadow-lg transition hover:scale-105">
+    <i id="audio-icon" class="fa-solid fa-play text-sm"></i>
+  </button>
+
+  <div class="w-full max-w-[420px] bg-scrap-bg min-h-screen overflow-hidden flex flex-col relative shadow-2xl">
+    
+    <!-- Header Romantis -->
+    <header class="pt-10 px-6 text-center space-y-3" data-aos="fade-down">
+      <span class="text-[10px] uppercase tracking-[0.3em] text-scrap-red font-semibold">THE WEDDING INVITATION</span>
+      <h1 class="font-serif text-3xl font-bold text-scrap-dark">Akbar & Soleha</h1>
+      <p class="text-xs text-stone-500 font-light">Kami mengundang Anda untuk merayakan cinta kami</p>
+
+      <!-- Kotak Nama Tamu -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-3 shadow-sm inline-block px-6">
+        <p class="text-[10px] uppercase tracking-wider text-stone-400">Kepada Yth:</p>
+        <h3 id="guest-name" class="font-serif text-base font-bold text-scrap-red">Tamu Undangan</h3>
+      </div>
+    </header>
+
+    <!-- Foto Masa Kecil (Scrapbook Cerita) -->
+    <section class="py-6 px-6 text-center space-y-3" data-aos="fade-up">
+      <p class="text-xs font-bold uppercase tracking-wider text-scrap-red">Dahulu Kami Pernah Seperti Ini</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white p-2 rounded-2xl shadow-sm border border-stone-200">
+          <div class="h-40 rounded-xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+          </div>
+          <p class="text-[11px] font-serif font-bold mt-2 text-stone-700">Akbar Kecil</p>
+        </div>
+        <div class="bg-white p-2 rounded-2xl shadow-sm border border-stone-200">
+          <div class="h-40 rounded-xl overflow-hidden bg-stone-100">
+            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+          </div>
+          <p class="text-[11px] font-serif font-bold mt-2 text-stone-700">Soleha Kecil</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foto Masa Sekarang -->
+    <section class="px-6 py-4 text-center space-y-3" data-aos="fade-up">
+      <p class="text-xs font-bold uppercase tracking-wider text-stone-600">Dan Sekarang Kami Bersatu</p>
+      <div class="h-64 rounded-3xl overflow-hidden shadow-md border-2 border-white">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+      </div>
+    </section>
+
+    <!-- Kalender Bulanan Rapi -->
+    <section class="py-6 px-8 text-center space-y-3" data-aos="fade-up">
+      <span class="text-xs font-bold uppercase tracking-widest text-scrap-red">Juli 2026</span>
+      <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm max-w-xs mx-auto">
+        <div class="font-serif text-3xl font-bold text-scrap-red mb-2">27</div>
+        <p class="text-[11px] text-stone-500">Senin, Pukul 15:30 WIB</p>
+        <p class="text-[11px] text-stone-600 font-medium mt-1">Villa Pradana, Kaliningrad</p>
+        <a href="https://maps.google.com" target="_blank" class="mt-3 inline-block px-5 py-2 bg-scrap-red text-white text-xs font-semibold rounded-full shadow hover:bg-rose-900 transition">
+          <i class="fa-solid fa-location-dot"></i> Lihat Peta
+        </a>
+      </div>
+    </section>
+
+    <!-- RSVP WhatsApp Card -->
+    <footer class="bg-scrap-card p-8 text-center space-y-4 border-t border-stone-200 mt-auto">
+      <p class="font-serif text-xl font-bold text-scrap-dark">Konfirmasi Kehadiran</p>
+      <a href="https://wa.me/6281285589413?text=Halo%20Akbar%20%26%20Soleha%2C%20saya%20akan%20hadir%20di%20pernikahan%20kalian!" target="_blank" class="block w-full py-3 bg-scrap-red text-white font-semibold rounded-2xl text-xs uppercase tracking-wider shadow hover:bg-rose-900 transition">
+        <i class="fa-brands fa-whatsapp text-sm mr-1"></i> Hubungi via WhatsApp
+      </a>
+      <p class="text-[10px] text-stone-400 uppercase tracking-widest pt-2">© 2026 Akbar & Soleha</p>
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('invite');
+    if (guest) document.getElementById('guest-name').innerText = decodeURIComponent(guest);
+
+    const audio = document.getElementById('wedding-audio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+    function toggleAudio() {
+      if (isPlaying) { audio.pause(); audioIcon.classList.replace('fa-pause', 'fa-play'); isPlaying = false; }
+      else { audio.play(); audioIcon.classList.replace('fa-play', 'fa-pause'); isPlaying = true; }
+    }
+  </script>
+</body>
+</html>
